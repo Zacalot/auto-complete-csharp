@@ -1,0 +1,20 @@
+#+TITLE: Auto-complete source for C#
+
+* Description
+Auto-completion source for C# keywords to be used with the auto-complete package
+* Dependencies
+The ~auto-complete~ package
+* Usage
+Add ~ac-source-csharp~ to your ~ac-sources~ variable while in ~csharp-mode~
+Example code:
+#+begin_src emacs-lisp
+(require 'auto-complete-csharp)
+(add-hook 'csharp-mode-hook #'(lambda ()
+                                (setq ac-sources '(ac-source-csharp))
+                                (auto-complete-mode)))
+#+end_src
+* Features
+- Autocompletion for C# keywords with light documentation
+* Why include only keywords?
+LSP servers like ~eglot~ grant auto-completion for everything else fine.
+As a result, this package is only useful if you find that LSP servers for C# run too slowly to have them prompt auto completion as you type, as is the case for me when working on Windows. So I use this package to have simple and fast completion for keywords without any LSP server lag. Feel free to extend this yourself if you need anything else.
