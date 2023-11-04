@@ -4,9 +4,21 @@
 Auto-completion source for C# keywords to be used with the auto-complete package
 * Dependencies
 The ~auto-complete~ package
+* Installation
+~use-package~ install via ~straight~:
+#+begin_src emacs-lisp
+(use-package auto-complete-csharp
+  :straight (
+             :host github
+             :repo "Zacalot/auto-complete-csharp")
+  :hook
+  (csharp-mode . (lambda ()
+                   (setq ac-sources '(ac-source-csharp))
+                   (auto-complete-mode))))
+#+end_src
 * Usage
 Add ~ac-source-csharp~ to your ~ac-sources~ variable while in ~csharp-mode~
-Example code:
+Example:
 #+begin_src emacs-lisp
 (require 'auto-complete-csharp)
 (add-hook 'csharp-mode-hook #'(lambda ()
